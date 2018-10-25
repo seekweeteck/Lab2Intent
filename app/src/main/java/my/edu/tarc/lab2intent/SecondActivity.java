@@ -41,7 +41,7 @@ public class SecondActivity extends AppCompatActivity {
         Intent intent = new Intent();
 
         intent.putExtra(TAG_REPLY, stringReply);
-        setResult(RESULT_OK);
+        setResult(RESULT_OK, intent);
         finish();
     }
 }

@@ -19,11 +19,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void sendMessage(View view){
+    public void sendMessage(View view) {
         EditText editTextMessage;
         editTextMessage = findViewById(R.id.editTextMessage);
         //Input validation here
-        if(TextUtils.isEmpty(editTextMessage.getText())){
+        if (TextUtils.isEmpty(editTextMessage.getText())) {
             editTextMessage.setError(getString(R.string.error_message));
             return;
         }
@@ -40,12 +40,15 @@ public class MainActivity extends AppCompatActivity {
                                     int resultCode,
                                     Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_REPLY_CODE){
-            if(resultCode == RESULT_OK){
-                TextView textViewReply;
-                textViewReply = findViewById(R.id.textViewReply);
-                String stringReply = data.getStringExtra(SecondActivity.TAG_REPLY);
-                textViewReply.setText("" + stringReply);
+        if (requestCode == REQUEST_REPLY_CODE) {
+            if (resultCode == RESULT_OK) {
+
+                if (data.hasExtra(SecondActivity.TAG_REPLY)) {
+                    TextView textViewReply;
+                    textViewReply = findViewById(R.id.textViewReply);
+                    String stringReply = data.getStringExtra(SecondActivity.TAG_REPLY);
+                    textViewReply.setText("" + stringReply);
+                }
             }
         }
     }
